@@ -24,7 +24,6 @@
         <button class="menu-item" type="button" data-section="graph-section">📈 グラフ</button>
         <button class="menu-item" type="button" data-section="best-section">🏆 自己ベスト</button>
         <button class="menu-item" type="button" data-section="exercise-section">⚙️ 種目を管理</button>
-        <button class="menu-item" type="button" data-section="data-section">💾 データ管理</button>
     </nav>
 
     <section id="home-section" class="page-section active">
@@ -98,7 +97,6 @@
             <div class="day-detail-header">
                 <h3 id="selected-date-title">2026/09/22</h3>
             </div>
-
             <button id="show-add-record-button" class="add-day-record-button" type="button">この日に記録を追加</button>
 
             <div id="add-day-record-form" class="add-day-record-form hidden">
@@ -111,7 +109,6 @@
                 <input type="number" id="past-reps" class="past-record-input" placeholder="回" min="1">
                 <label for="past-sets" class="form-label">セット数</label>
                 <input type="number" id="past-sets" class="past-record-input" placeholder="セット" min="1">
-
                 <div class="add-day-record-actions">
                     <button id="save-day-record-button" class="save-day-record-button" type="button">この日に保存</button>
                     <button id="cancel-day-record-button" class="cancel-day-record-button" type="button">キャンセル</button>
@@ -139,7 +136,6 @@
             <h2>グラフ</h2>
             <label for="graph-exercise" class="graph-label">種目</label>
             <select id="graph-exercise" class="graph-select"></select>
-
             <p class="graph-label">期間</p>
             <div class="period-buttons">
                 <button class="period-button active" type="button" data-period="1">1ヶ月</button>
@@ -148,7 +144,6 @@
                 <button class="period-button" type="button" data-period="12">1年</button>
                 <button class="period-button" type="button" data-period="all">全期間</button>
             </div>
-
             <div id="graph-container" class="graph-container"></div>
         </section>
     </section>
@@ -170,18 +165,7 @@
             <div id="exercise-list" class="exercise-list"></div>
         </section>
     </section>
-
-    <section id="data-section" class="page-section">
-        <section class="section-card">
-            <h2>データ管理</h2>
-            <p class="data-management-description">記録・種目・メモをバックアップ・復元できます。</p>
-            <button id="backup-button" class="backup-button" type="button">データをバックアップ</button>
-            <button id="restore-button" class="restore-button" type="button">データを復元</button>
-            <input type="file" id="restore-file-input" accept=".json,application/json" hidden>
-        </section>
-    </section>
 </main>
-
 <script src="script.js"></script>
 </body>
 </html>
