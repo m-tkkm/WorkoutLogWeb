@@ -2,170 +2,546 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-079JRYQMTC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-079JRYQMTC');
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f2f2f7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="WorkoutLog">
+
     <title>WorkoutLog</title>
+
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 <main class="container">
     <header class="app-header">
         <h1>今日のトレーニング</h1>
-        <button id="menu-button" class="menu-button" type="button" aria-label="メニュー">☰</button>
+
+        <button
+            id="menu-button"
+            class="menu-button"
+            type="button"
+            aria-label="メニュー"
+        >
+            ☰
+        </button>
     </header>
 
-    <nav id="menu-panel" class="menu-panel hidden" aria-label="メニュー">
-        <button class="menu-item" type="button" data-section="home-section">🏋️ 今日のトレーニング</button>
-        <button class="menu-item" type="button" data-section="calendar-section">📅 カレンダー</button>
-        <button class="menu-item" type="button" data-section="graph-section">📈 グラフ</button>
-        <button class="menu-item" type="button" data-section="best-section">🏆 自己ベスト</button>
-        <button class="menu-item" type="button" data-section="exercise-section">⚙️ 種目を管理</button>
+    <nav
+        id="menu-panel"
+        class="menu-panel hidden"
+        aria-label="メニュー"
+    >
+        <button
+            class="menu-item"
+            type="button"
+            data-section="home-section"
+        >
+            🏋️ 今日のトレーニング
+        </button>
+
+        <button
+            class="menu-item"
+            type="button"
+            data-section="calendar-section"
+        >
+            📅 カレンダー
+        </button>
+
+        <button
+            class="menu-item"
+            type="button"
+            data-section="graph-section"
+        >
+            📈 グラフ
+        </button>
+
+        <button
+            class="menu-item"
+            type="button"
+            data-section="best-section"
+        >
+            🏆 自己ベスト
+        </button>
+
+        <button
+            class="menu-item"
+            type="button"
+            data-section="exercise-section"
+        >
+            ⚙️ 種目を管理
+        </button>
     </nav>
 
-    <section id="home-section" class="page-section active">
+    <section
+        id="home-section"
+        class="page-section active"
+    >
         <section class="card">
-            <label for="exercise">種目</label>
+            <label for="exercise">
+                種目
+            </label>
+
             <select id="exercise"></select>
         </section>
 
         <section class="card stats">
             <div class="stat-item">
-                <p class="stat-title">前回の記録</p>
-                <p id="previous-record-output" class="stat-value">まだ記録なし</p>
+                <p class="stat-title">
+                    前回の記録
+                </p>
+
+                <p
+                    id="previous-record-output"
+                    class="stat-value"
+                >
+                    まだ記録なし
+                </p>
             </div>
+
             <div class="divider"></div>
+
             <div class="stat-item">
-                <p class="stat-title">自己ベスト</p>
-                <p id="best-record-output" class="stat-value">まだ記録なし</p>
+                <p class="stat-title">
+                    自己ベスト
+                </p>
+
+                <p
+                    id="best-record-output"
+                    class="stat-value"
+                >
+                    まだ記録なし
+                </p>
             </div>
         </section>
 
         <section class="card">
             <div class="input-row">
-                <label for="weight">重量</label>
-                <input type="number" id="weight" placeholder="kg" step="0.5" min="0">
-                <span>kg</span>
+                <label for="weight">
+                    重量
+                </label>
+
+                <input
+                    type="number"
+                    id="weight"
+                    placeholder="kg"
+                    step="0.5"
+                    min="0"
+                >
+
+                <span>
+                    kg
+                </span>
             </div>
+
             <div class="input-row">
-                <label for="reps">回数</label>
-                <input type="number" id="reps" placeholder="回" min="1">
-                <span>回</span>
+                <label for="reps">
+                    回数
+                </label>
+
+                <input
+                    type="number"
+                    id="reps"
+                    placeholder="回"
+                    min="1"
+                >
+
+                <span>
+                    回
+                </span>
             </div>
+
             <div class="input-row">
-                <label for="sets">セット数</label>
-                <input type="number" id="sets" placeholder="セット" min="1">
-                <span>セット</span>
+                <label for="sets">
+                    セット数
+                </label>
+
+                <input
+                    type="number"
+                    id="sets"
+                    placeholder="セット"
+                    min="1"
+                >
+
+                <span>
+                    セット
+                </span>
             </div>
         </section>
 
         <section class="results">
             <div class="result-card">
-                <p class="result-title">推定1RM</p>
-                <p id="one-rm-output" class="result-value">-</p>
+                <p class="result-title">
+                    推定1RM
+                </p>
+
+                <p
+                    id="one-rm-output"
+                    class="result-value"
+                >
+                    -
+                </p>
             </div>
+
             <div class="result-card">
-                <p class="result-title">総ボリューム</p>
-                <p id="volume-output" class="result-value">-</p>
+                <p class="result-title">
+                    総ボリューム
+                </p>
+
+                <p
+                    id="volume-output"
+                    class="result-value"
+                >
+                    -
+                </p>
             </div>
         </section>
 
-        <button id="save-button" class="save-button" type="button">記録する</button>
+        <button
+            id="save-button"
+            class="save-button"
+            type="button"
+        >
+            記録する
+        </button>
     </section>
 
-    <section id="calendar-section" class="page-section">
+    <section
+        id="calendar-section"
+        class="page-section"
+    >
         <section class="section-card">
-            <h2>カレンダー</h2>
+            <h2>
+                カレンダー
+            </h2>
+
             <div class="calendar-card">
                 <div class="calendar-header">
-                    <button id="previous-month" class="calendar-nav-button" type="button" aria-label="前月">‹</button>
-                    <h3 id="calendar-title">2026年9月</h3>
-                    <button id="next-month" class="calendar-nav-button" type="button" aria-label="次月">›</button>
+                    <button
+                        id="previous-month"
+                        class="calendar-nav-button"
+                        type="button"
+                        aria-label="前月"
+                    >
+                        ‹
+                    </button>
+
+                    <h3 id="calendar-title">
+                        2026年9月
+                    </h3>
+
+                    <button
+                        id="next-month"
+                        class="calendar-nav-button"
+                        type="button"
+                        aria-label="次月"
+                    >
+                        ›
+                    </button>
                 </div>
+
                 <div class="calendar-weekdays">
-                    <div>日</div><div>月</div><div>火</div><div>水</div><div>木</div><div>金</div><div>土</div>
+                    <div>日</div>
+                    <div>月</div>
+                    <div>火</div>
+                    <div>水</div>
+                    <div>木</div>
+                    <div>金</div>
+                    <div>土</div>
                 </div>
-                <div id="calendar-days" class="calendar-days"></div>
-                <p class="calendar-note">● 筋トレ記録がある日</p>
+
+                <div
+                    id="calendar-days"
+                    class="calendar-days"
+                ></div>
+
+                <p class="calendar-note">
+                    ● 筋トレ記録がある日
+                </p>
             </div>
         </section>
 
-        <section id="selected-day-section" class="day-detail-card hidden">
+        <section
+            id="selected-day-section"
+            class="day-detail-card hidden"
+        >
             <div class="day-detail-header">
-                <h3 id="selected-date-title">2026/09/22</h3>
+                <h3 id="selected-date-title">
+                    2026/09/22
+                </h3>
             </div>
-            <button id="show-add-record-button" class="add-day-record-button" type="button">この日に記録を追加</button>
 
-            <div id="add-day-record-form" class="add-day-record-form hidden">
-                <h4>記録を追加</h4>
-                <label for="past-exercise" class="form-label">種目</label>
-                <select id="past-exercise" class="past-record-input"></select>
-                <label for="past-weight" class="form-label">重量</label>
-                <input type="number" id="past-weight" class="past-record-input" placeholder="kg" step="0.5" min="0">
-                <label for="past-reps" class="form-label">回数</label>
-                <input type="number" id="past-reps" class="past-record-input" placeholder="回" min="1">
-                <label for="past-sets" class="form-label">セット数</label>
-                <input type="number" id="past-sets" class="past-record-input" placeholder="セット" min="1">
+            <button
+                id="show-add-record-button"
+                class="add-day-record-button"
+                type="button"
+            >
+                この日に記録を追加
+            </button>
+
+            <div
+                id="add-day-record-form"
+                class="add-day-record-form hidden"
+            >
+                <h4>
+                    記録を追加
+                </h4>
+
+                <label
+                    for="past-exercise"
+                    class="form-label"
+                >
+                    種目
+                </label>
+
+                <select
+                    id="past-exercise"
+                    class="past-record-input"
+                ></select>
+
+                <label
+                    for="past-weight"
+                    class="form-label"
+                >
+                    重量
+                </label>
+
+                <input
+                    type="number"
+                    id="past-weight"
+                    class="past-record-input"
+                    placeholder="kg"
+                    step="0.5"
+                    min="0"
+                >
+
+                <label
+                    for="past-reps"
+                    class="form-label"
+                >
+                    回数
+                </label>
+
+                <input
+                    type="number"
+                    id="past-reps"
+                    class="past-record-input"
+                    placeholder="回"
+                    min="1"
+                >
+
+                <label
+                    for="past-sets"
+                    class="form-label"
+                >
+                    セット数
+                </label>
+
+                <input
+                    type="number"
+                    id="past-sets"
+                    class="past-record-input"
+                    placeholder="セット"
+                    min="1"
+                >
+
                 <div class="add-day-record-actions">
-                    <button id="save-day-record-button" class="save-day-record-button" type="button">この日に保存</button>
-                    <button id="cancel-day-record-button" class="cancel-day-record-button" type="button">キャンセル</button>
+                    <button
+                        id="save-day-record-button"
+                        class="save-day-record-button"
+                        type="button"
+                    >
+                        この日に保存
+                    </button>
+
+                    <button
+                        id="cancel-day-record-button"
+                        class="cancel-day-record-button"
+                        type="button"
+                    >
+                        キャンセル
+                    </button>
                 </div>
             </div>
 
             <div class="detail-section">
-                <h4>筋トレ記録</h4>
-                <div id="selected-day-records" class="day-records"></div>
+                <h4>
+                    筋トレ記録
+                </h4>
+
+                <div
+                    id="selected-day-records"
+                    class="day-records"
+                ></div>
             </div>
 
             <div class="detail-section">
                 <div class="memo-header">
-                    <h4>メモ</h4>
-                    <span id="memo-saved-message" class="memo-saved hidden">✓ 保存しました</span>
+                    <h4>
+                        メモ
+                    </h4>
+
+                    <span
+                        id="memo-saved-message"
+                        class="memo-saved hidden"
+                    >
+                        ✓ 保存しました
+                    </span>
                 </div>
-                <textarea id="memo-input" class="memo-input" placeholder="体調やフォーム、気づいたことなど"></textarea>
-                <button id="save-memo-button" class="memo-save-button" type="button">メモを保存</button>
+
+                <textarea
+                    id="memo-input"
+                    class="memo-input"
+                    placeholder="体調やフォーム、気づいたことなど"
+                ></textarea>
+
+                <button
+                    id="save-memo-button"
+                    class="memo-save-button"
+                    type="button"
+                >
+                    メモを保存
+                </button>
             </div>
         </section>
     </section>
 
-    <section id="graph-section" class="page-section">
+    <section
+        id="graph-section"
+        class="page-section"
+    >
         <section class="section-card">
-            <h2>グラフ</h2>
-            <label for="graph-exercise" class="graph-label">種目</label>
-            <select id="graph-exercise" class="graph-select"></select>
-            <p class="graph-label">期間</p>
+            <h2>
+                グラフ
+            </h2>
+
+            <label
+                for="graph-exercise"
+                class="graph-label"
+            >
+                種目
+            </label>
+
+            <select
+                id="graph-exercise"
+                class="graph-select"
+            ></select>
+
+            <p class="graph-label">
+                期間
+            </p>
+
             <div class="period-buttons">
-                <button class="period-button active" type="button" data-period="1">1ヶ月</button>
-                <button class="period-button" type="button" data-period="3">3ヶ月</button>
-                <button class="period-button" type="button" data-period="6">6ヶ月</button>
-                <button class="period-button" type="button" data-period="12">1年</button>
-                <button class="period-button" type="button" data-period="all">全期間</button>
+                <button
+                    class="period-button active"
+                    type="button"
+                    data-period="1"
+                >
+                    1ヶ月
+                </button>
+
+                <button
+                    class="period-button"
+                    type="button"
+                    data-period="3"
+                >
+                    3ヶ月
+                </button>
+
+                <button
+                    class="period-button"
+                    type="button"
+                    data-period="6"
+                >
+                    6ヶ月
+                </button>
+
+                <button
+                    class="period-button"
+                    type="button"
+                    data-period="12"
+                >
+                    1年
+                </button>
+
+                <button
+                    class="period-button"
+                    type="button"
+                    data-period="all"
+                >
+                    全期間
+                </button>
             </div>
-            <div id="graph-container" class="graph-container"></div>
+
+            <div
+                id="graph-container"
+                class="graph-container"
+            ></div>
         </section>
     </section>
 
-    <section id="best-section" class="page-section">
+    <section
+        id="best-section"
+        class="page-section"
+    >
         <section class="section-card">
-            <h2>自己ベスト</h2>
-            <div id="best-list" class="best-list"></div>
+            <h2>
+                自己ベスト
+            </h2>
+
+            <div
+                id="best-list"
+                class="best-list"
+            ></div>
         </section>
     </section>
 
-    <section id="exercise-section" class="page-section">
+    <section
+        id="exercise-section"
+        class="page-section"
+    >
         <section class="section-card">
-            <h2>種目を管理</h2>
+            <h2>
+                種目を管理
+            </h2>
+
             <div class="add-exercise-row">
-                <input type="text" id="new-exercise-input" placeholder="例：ショルダープレス" maxlength="30">
-                <button id="add-exercise-button" class="add-exercise-button" type="button">追加</button>
+                <input
+                    type="text"
+                    id="new-exercise-input"
+                    placeholder="例：ショルダープレス"
+                    maxlength="30"
+                >
+
+                <button
+                    id="add-exercise-button"
+                    class="add-exercise-button"
+                    type="button"
+                >
+                    追加
+                </button>
             </div>
-            <div id="exercise-list" class="exercise-list"></div>
+
+            <div
+                id="exercise-list"
+                class="exercise-list"
+            ></div>
         </section>
     </section>
 </main>
+
 <script src="script.js"></script>
 </body>
 </html>
