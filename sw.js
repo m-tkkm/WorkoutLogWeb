@@ -1,12 +1,5 @@
-const CACHE_NAME = "workoutlog-v2";
-
-const APP_FILES = [
-    "./",
-    "./index.html",
-    "./style.css",
-    "./script.js",
-    "./manifest.webmanifest"
-];
+const CACHE_NAME = "workoutlog-v3";
+const APP_FILES = ["./", "./index.html", "./style.css", "./script.js", "./manifest.webmanifest"];
 
 self.addEventListener("install", event => {
     event.waitUntil(
